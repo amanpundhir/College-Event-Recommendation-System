@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Recommender System</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<style>
+    .text-white{
+        color:white
+    }
+
+    .card {
+        width: 250px; /* Set the width of the card */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden; /* Hide overflowing content */
+    }
+
+    .image-box {
+        border-bottom: 1px solid #ccc; /* Add a border below the image */
+        padding: 10px;
+    }
+
+    .image-box img {
+        display: block;
+        width: 100%;
+        height: 150px; /* Set a fixed height for all images */
+        object-fit: cover; /* Ensure the image covers the entire box */
+    }
+
+    .card-body {
+        padding: 10px;
+    }
+
+    .text-white {
+        color: white;
+    }
+
+    /* Optional: Add hover effect to the card */
+    .card:hover {
+        box-shadow: 5px 5px 20px rgb(0, 0, 0);
+    }
+   
+    .navbar {
+        background: linear-gradient(to right, #2dfff5, #fff878);
+        padding: 3px 3px;
+        border-radius: 80px;
+        transition: background-color 0.3s; /* Smooth transition for background color */
+    }
+
+    /* Navbar hover effect */
+    .navbar:hover {
+        background-color: #000000;
+        box-shadow:  5px 5px 20px rgb(0, 0, 0); /* Change background color on hover */
+    }
+
+    /* Brand text style */
+    .navbar-brand {
+        color: #000000;
+        font-weight: bold;
+    }
+
+    /* Brand text hover effect */
+    .navbar-brand:hover {
+        color: #000000; /* Change brand text color on hover */
+    }
+
+    /* Navbar links style */
+    .navbar-nav li a {
+        color: #000000;
+    }
+
+    /* Navbar links hover effect */
+    .navbar-nav li a:hover {
+        padding: 14px 14px;
+        color: #000000; /* Change link text color on hover */
+        border-radius: 30px;
+        box-shadow: 5px 5px 30px rgb(0, 0, 0);
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+
+</style>
+<body style="background: linear-gradient(to right, #0172AF, #74FEBD);">
+
+    <nav class="navbar" style="background: linear-gradient(to right, #2dfff5, #fff878);">
+        <a class="navbar-brand">Event recommender</a>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommend</a></li>
+            <li><a>Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-white" style="font-size:50px">Top 10 Events</h1>
+            </div>
+
+            {% for i in range(event_name|length) %}
+            <div class="col-md-3" style="margin-top: 40px;">
+                    <div class="card">
+                        <div class="image-box">
+                            <img class="card-img-top" src="{{ Images[i] }}" alt="Image">
+                        </div>
+                        <div class="card-body">
+                            <p class="text-white">{{ event_name[i] }}</p>
+                            <h4 class="text-white">{{ category[i] }}</h4>
+                            <h4 class="text-white">ratings - {{ ratings[i] }}</h4>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+
+</body>
+</html>
